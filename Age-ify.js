@@ -1,5 +1,9 @@
 const yearOfBirth = 1994;
-let yearFuture = 2050;
-age = yearFuture - yearOfBirth;
+
+const yearFuture = 2050;
+const age = yearFuture - yearOfBirth;
 
 console.log("You will be " + age + " years old in " + yearFuture);
+
+// alternatively
+const str = `You will be ${age} years old in ${yearFuture}`;
