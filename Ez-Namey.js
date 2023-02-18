@@ -1,5 +1,6 @@
+"use strict";
 const randomNumber = Math.floor(Math.random() * 10);
-let firstWords = [
+const firstWords = [
   "Easy",
   "Awesome",
   "Amazing",
@@ -11,7 +12,7 @@ let firstWords = [
   "Black",
   "Hard-working",
 ];
-let secondWords = [
+const secondWords = [
   "Score",
   "Grace",
   "Beans",
@@ -23,14 +24,8 @@ let secondWords = [
   "Leader",
   "Panther",
 ];
-startUpName = firstWords[randomNumber] + " " + secondWords[randomNumber];
+const startUpName = `${firstWords[randomNumber]} ${secondWords[randomNumber]}`;
 
 console.log(
-  "The startup:",
-  '"',
-  startUpName,
-  '"',
-  "contains",
-  startUpName.length,
-  "characters"
+  `The start up: "${startUpName}" contains ${startUpName.length} characters`
 );
