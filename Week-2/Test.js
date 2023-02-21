@@ -7,10 +7,10 @@ function addTwo(x) {
   return x + 2;
 }
 
-// console.log(addTwo(1));
-console.log(y);
-console.log(addTwo(y));
-console.log(y);
+// // console.log(addTwo(1));
+// console.log(y);
+// console.log(addTwo(y));
+// console.log(y);
 // console.log(tite);
 
 // function spam(number) {
