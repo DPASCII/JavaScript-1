@@ -9,12 +9,12 @@ const day = [
   "Friday",
   "Saturday",
 ];
-let date = new Date();
-let eventDate = 0;
+
 function getEventWeekday(input) {
+  let date = new Date();
   date = date.getDay() + input;
-  eventDate = date % 7;
+
+  return date % 7;
 }
 
-getEventWeekday(10);
-console.log(day[eventDate]);
+console.log(day[getEventWeekday(10)]);
