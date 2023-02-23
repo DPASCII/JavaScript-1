@@ -3,22 +3,19 @@
 function getFullName(firstname, surname, useFormalName, gender) {
   firstname = firstname.trim();
   surname = surname.trim();
-  const fullName = `${firstname} ${surname}`;
 
   if (!firstname || !surname) {
     return "Invalid Input";
   }
 
-  if (!useFormalName) {
-    return fullName;
+  const fullName = `${firstname} ${surname}`;
+
+  if (useFormalName === true) {
+    const type = gender === "male" ? "Lord" : "Lady";
+    return `${type} ${fullName}`;
   }
 
-  if (gender == "male") {
-    return `Lord ${fullName}`;
-  }
-
-  return `Lady ${fullName}`;
+  return fullName;
 }
-
-console.log(getFullName("David", "Pascual", true, "male"));
+console.log(getFullName("David", "Pascual", false, "male"));
 console.log(getFullName("Carlo", "Pascual", true, "female"));
