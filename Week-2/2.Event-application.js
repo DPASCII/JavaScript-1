@@ -1,20 +1,19 @@
 "use strict";
 
-const day = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-
 function getEventWeekday(input) {
+  const day = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
   let date = new Date();
   date = date.getDay() + input;
 
-  return date % 7;
+  return day[date % 7];
 }
 
-console.log(day[getEventWeekday(10)]);
+console.log(getEventWeekday(10));
