@@ -1,23 +1,24 @@
 "use strict";
 
 function getFullName(firstname, surname, useFormalName, gender) {
-  if (firstname.length == 0 || surname.length == 0) {
-    return `Invalid Input`;
-  } else if (useFormalName === true) {
-    if (gender == "male") {
-      return `Lord ${firstname} ${surname}`;
-    } else if (gender == "female") {
-      return `Lady ${firstname} ${surname}`;
-    } else {
-      return `${firstname} ${surname}`;
-    }
-  } else {
-    return `${firstname} ${surname}`;
+  firstname = firstname.trim();
+  surname = surname.trim();
+  const fullName = `${firstname} ${surname}`;
+
+  if (!firstname || !surname) {
+    return "Invalid Input";
   }
+
+  if (!useFormalName) {
+    return fullName;
+  }
+
+  if (gender == "male") {
+    return `Lord ${fullName}`;
+  }
+
+  return `Lady ${fullName}`;
 }
 
-const fullName1 = getFullName("David", "Pascual", true, "male");
-const fullName2 = getFullName("Carlo", "Pascual", true, "female");
-
-console.log(fullName1);
-console.log(fullName2);
+console.log(getFullName("David", "Pascual", true, "male"));
+console.log(getFullName("Carlo", "Pascual", true, "female"));
