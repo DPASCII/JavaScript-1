@@ -10,13 +10,14 @@ function canBuyMoreCandy() {
   }
 
   if (boughtCandy < amountToSpend) {
-    console.log("You can buy more, so please do!");
-    return true;
-  } else {
     console.log("Enough candy for you!");
     return false;
   }
+
+  console.log("You can buy more, so please do!");
+  return true;
 }
+
 function addCandy(candyType, candyWeight) {
   const flavor = ["SWEET", "CHOCOLATE", "TOFFEE", "CHEWING-GUM"];
   const candyPrice = [0.5, 0.7, 1.1, 0.03];
