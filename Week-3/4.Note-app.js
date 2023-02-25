@@ -12,7 +12,14 @@ console.log(notes);
 
 //Note retrieve function
 function getNote(id) {
-  return notes[id - 1];
+  let index = -1;
+  for (let i = 0; i < notes.length; i++) {
+    if (notes[i].id == id) {
+      index = i;
+      break;
+    }
+  }
+  return notes[index];
 }
 
 const firstNote = getNote(1);
@@ -27,4 +34,19 @@ function logOutNotesFormatted() {
   }
 }
 
+logOutNotesFormatted();
+
+//Unique function delete note using ID
+function deleteNote(id) {
+  let index = -1;
+  for (let i = 0; i < notes.length; i++) {
+    if (notes[i].id == id) {
+      index = i;
+      break;
+    }
+  }
+  notes.splice(index, 1);
+}
+
+deleteNote(1);
 logOutNotesFormatted();
