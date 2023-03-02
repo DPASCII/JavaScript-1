@@ -6,7 +6,7 @@ const options = {
 };
 const date = new Date();
 const formattedDate = new Intl.DateTimeFormat("en", options).format(date);
-let usage = [];
+const usage = [];
 
 //show duration of all activities
 function showStatus(date) {
@@ -50,13 +50,11 @@ function addActivity(activity, duration) {
     return;
   }
 
-  usage.push(
-    (object = {
-      date: formattedDate,
-      activity: activity,
-      duration: duration,
-    })
-  );
+  usage.push({
+    date: formattedDate,
+    activity,
+    duration,
+  });
 }
 
 function favoriteActivity() {
@@ -80,7 +78,9 @@ function favoriteActivity() {
   let findDuplicates = (arr) =>
     arr.filter((item, index) => arr.indexOf(item) != index);
 
-  let duplicate = [...new Set(findDuplicates(usage["activity"]))];
+  let duplicate = [findDuplicates(usage["activity"])];
+
+  [youtube, youtube];
 
   console.log(duplicate);
   //add all duration of duplicate activities

@@ -3,8 +3,8 @@ const travelInformation = {
   destinationDistance: 432,
 };
 
-function travelTimeCalculator(info) {
-  let time = info.destinationDistance / info.speed;
+function travelTimeCalculator({ destinationDistance, speed }) {
+  const time = destinationDistance / speed;
   const remainder = ((time * 100) % 100) / 100;
   const hours = time - remainder;
   const minutes = Math.round(remainder * 60);

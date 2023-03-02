@@ -40,20 +40,12 @@ function wastedTime() {
           10000
       ) / 100
     );
-  }
-
-  //Logging out individual series stats of wasting life
-  for (i = 0; i < store.length; i++) {
     console.log(`${seriesDurations[i]["title"]} took ${store[i]}% of my life`);
-  }
-
-  for (i = 0; i < store.length; i++) {
     totalWastedTime = totalWastedTime + store[i];
   }
 
   //Logging out of total wasted percent of life
-  console.log("");
-  console.log(`In total that is ${totalWastedTime.toString()}% of my life`);
+  console.log(`\nIn total that is ${totalWastedTime.toString()}% of my life`);
 }
 
 wastedTime();
