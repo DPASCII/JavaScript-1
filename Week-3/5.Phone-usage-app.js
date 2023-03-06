@@ -40,6 +40,8 @@ function showStatus(date) {
 
 //adding activity
 function addActivity(activity, duration) {
+  const date = new Date();
+  const formattedDate = new Intl.DateTimeFormat("en", options).format(date);
   //checking for errors
   if (
     typeof activity !== "string" ||
@@ -58,58 +60,91 @@ function addActivity(activity, duration) {
 }
 
 function favoriteActivity() {
-  let act = [];
-  let dur = [];
-  let use = [];
-  let largest = 0;
+  const storeAct = [];
+  const store = [];
 
-  //store all activities
+  //isolate activities and duration
   for (i = 0; i < usage.length; i++) {
-    act.push(usage[i]["activity"]);
+    store.push({
+      activity: usage[i].activity,
+      duration: usage[i].duration,
+    });
+    storeAct.push({ activity: usage[i].activity, duration: 0 });
   }
 
-  //store all durations
-  for (i = 0; i < usage.length; i++) {
-    dur.push(usage[i]["duration"]);
-  }
+  const filtered = storeAct.filter(
+    (obj, index) =>
+      storeAct.findIndex((item) => item.activity === obj.activity) === index
+  );
 
-  //store duplicate activities
-  //Found this code paexplain pls
-  let findDuplicates = (arr) =>
-    arr.filter((item, index) => arr.indexOf(item) != index);
-
-  let duplicate = [findDuplicates(usage["activity"])];
-
-  [youtube, youtube];
-
-  console.log(duplicate);
-  //add all duration of duplicate activities
-  for (i = 0; i < duplicate.length; i++) {
-    let temp = 0;
-    for (j = 0; j < usage.length; j++) {
-      if (usage[j]["activity"] == duplicate[i]) {
-        temp = temp + usage[j]["duration"];
+  for (i = 0; i < filtered.length; i++) {
+    for (j = 0; j < store.length; j++) {
+      if (filtered[i].activity === store[j].activity) {
+        filtered[i].duration += store[j].duration;
       }
     }
-    use.push(temp);
-  }
-  console.log(use);
-
-  //find highest duration within duplicate activities
-  for (i = 0; i <= largest; i++) {
-    if (use[i] > largest) {
-      largest = use[i];
-    }
   }
 
-  //find highest duration in usage array
-  for (i = 0; i <= largest; i++) {
-    if (dur[i] > largest) {
-      largest = dur[i];
-    }
-  }
-  console.log(largest);
+  const favorite = filtered.reduce(function (prev, current) {
+    return prev.duration > current.duration ? prev : current;
+  });
+
+  console.log(`\nYour favorite activity is ${favorite.activity}`);
 }
+
+// function favoriteActivity() {
+//   let act = [];
+//   let dur = [];
+//   let use = [];
+//   let largest = 0;
+
+//   //store all activities
+//   for (i = 0; i < usage.length; i++) {
+//     act.push(usage[i]["activity"]);
+//   }
+
+//   //store all durations
+//   for (i = 0; i < usage.length; i++) {
+//     dur.push(usage[i]["duration"]);
+//   }
+
+//   //store duplicate activities
+//   //Found this code paexplain pls
+//   let findDuplicates = (arr) =>
+//     arr.filter((item, index) => arr.indexOf(item) != index);
+
+//   let duplicate = [findDuplicates(usage["activity"])];
+
+//   [youtube, youtube];
+
+//   console.log(duplicate);
+//   //add all duration of duplicate activities
+//   for (i = 0; i < duplicate.length; i++) {
+//     let temp = 0;
+//     for (j = 0; j < usage.length; j++) {
+//       if (usage[j]["activity"] == duplicate[i]) {
+//         temp = temp + usage[j]["duration"];
+//       }
+//     }
+//     use.push(temp);
+//   }
+//   console.log(use);
+
+//   //find highest duration within duplicate activities
+//   for (i = 0; i <= largest; i++) {
+//     if (use[i] > largest) {
+//       largest = use[i];
+//     }
+//   }
+
+//   //find highest duration in usage array
+//   for (i = 0; i <= largest; i++) {
+//     if (dur[i] > largest) {
+//       largest = dur[i];
+//     }
+//   }
+//   console.log(largest);
+// }
 
 addActivity("Youtube", 28);
 addActivity("Facebook", 15);
