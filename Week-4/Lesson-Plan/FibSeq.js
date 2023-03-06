@@ -1,5 +1,14 @@
 //Fibonacci Sequence Formula
 function fib(x) {
-  //Return with fibonacci sequence formula
-  return ((1.618034 ^ x) - ((1 - 1.618034) ^ x)) / Math.sqrt(5);
+  if (x === 0) {
+    return 0;
+  }
+
+  if (x === 1) {
+    return 1;
+  }
+
+  return fib(x - 1) + fib(x - 2);
 }
+
+console.log(fib(14));
